@@ -8,6 +8,7 @@ public class CommercialSellerResponseDTO {
 	private String businessName;
 	private String ownerName;
 	private String email;
+	private String password;
 	private String phone;
 	private String gumastaNumber;
 	private String gumasFile;
