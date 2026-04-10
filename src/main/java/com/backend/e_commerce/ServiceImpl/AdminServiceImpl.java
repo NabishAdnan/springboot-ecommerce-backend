@@ -17,7 +17,7 @@ public class AdminServiceImpl  implements AdminService{
 
 	@Override
 	public AdminDto adminLogin(AdminDto oAdminDto) {
-		// TODO Auto-generated method stub
+	
 		
 		if(oAdminDto.getUsername() == null || oAdminDto.getPassword() == null) {
 			throw new RuntimeException("Username & password should not null");
