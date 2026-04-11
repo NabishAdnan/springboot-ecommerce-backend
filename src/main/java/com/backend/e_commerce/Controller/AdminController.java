@@ -1,30 +1,33 @@
 package com.backend.e_commerce.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.e_commerce.DTO.AdminDto;
-import com.backend.e_commerce.Service.AdminService;
+import com.backend.e_commerce.Entity.CommercialSellerEntity;
+import com.backend.e_commerce.Repository.CommercialSellerRepo;
+
 
 @RestController
 @RequestMapping("/v1/app/admin")
 public class AdminController {
 	
-	
 	@Autowired
-	private AdminService oAdminService;
+	private CommercialSellerRepo comRepo;
+	 @PutMapping("/approve/{id}")
+	 public String approveCommercial(@PathVariable Long id) {
 
-	@PostMapping("/login")								
-	public ResponseEntity<AdminDto> adminLogin(@RequestBody AdminDto oAdminDto){
-		
-		
-		AdminDto response =  oAdminService.adminLogin(oAdminDto);
-		
-		
-		return null;
+	        CommercialSellerEntity user = comRepo.findById(id).orElse(null);
+
+	        if(user == null) {
+	            return "User not found";
+	        }
+
+	        user.setActive(true);
+	        comRepo.save(user);
+
+	        return "Commercial Approved Successfully";
+	    }
 	}
-}

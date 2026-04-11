@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="commercial-seller")
-public class CommercialSellerEntity {
+@Table(name = "users")
+public class UserEntity {
 	
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +17,9 @@ public class CommercialSellerEntity {
 	    private String username;
 	    private String password;
 	    private String email;
+	    private String role;
 
-	    private boolean isActive = false;
+	    private boolean isActive = true;
 
 		public Long getId() {
 			return id;
@@ -52,6 +53,14 @@ public class CommercialSellerEntity {
 			this.email = email;
 		}
 
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
 		public boolean isActive() {
 			return isActive;
 		}
@@ -59,5 +68,5 @@ public class CommercialSellerEntity {
 		public void setActive(boolean isActive) {
 			this.isActive = isActive;
 		}
-
+	    
 }

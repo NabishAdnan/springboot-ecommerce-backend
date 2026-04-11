@@ -1,23 +1,28 @@
 package com.backend.e_commerce.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "admins")
+
 public class AdminEntity {
 
-	
-	private long adminId;
-	private String username;
-	private String password;
-	
-	private boolean isActive = true;
-	public long getAdminId() {
-		return adminId;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String username;
+    private String password;
+    private String email;
+	public Long getId() {
+		return id;
 	}
-	public void setAdminId(long adminId) {
-		this.adminId = adminId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getUsername() {
 		return username;
@@ -31,14 +36,15 @@ public class AdminEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public boolean isActive() {
-		return isActive;
+		// TODO Auto-generated method stub
+		return false;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-	
-	
-	
-	
+    
 }
